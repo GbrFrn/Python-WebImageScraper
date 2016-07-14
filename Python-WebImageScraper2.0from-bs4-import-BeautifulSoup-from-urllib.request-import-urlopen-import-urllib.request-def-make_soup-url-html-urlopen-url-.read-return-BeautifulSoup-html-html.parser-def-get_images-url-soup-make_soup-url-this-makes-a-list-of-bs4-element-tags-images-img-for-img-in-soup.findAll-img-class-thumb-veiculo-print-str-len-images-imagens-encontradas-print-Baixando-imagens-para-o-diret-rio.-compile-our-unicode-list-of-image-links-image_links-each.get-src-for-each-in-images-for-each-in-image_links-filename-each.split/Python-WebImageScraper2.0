@@ -1,0 +1,50 @@
+#Updated with urllib.request, since there's no urllib2 anymore.
+#Added filter by element class in soup.findAll
+#Added send to desired folder after images are downloaded
+
+from bs4 import BeautifulSoup
+from urllib.request import urlopen
+import urllib.request
+
+
+def make_soup(url):
+    html = urlopen(url).read()
+    return BeautifulSoup(html, "html.parser")
+
+def get_images(url):
+    soup = make_soup(url)
+    #this makes a list of bs4 element tags
+    images = [img for img in soup.findAll("type of element", {"class":"class name"})]
+    print (str(len(images)) + "images found")
+    print ('Downloading images to directory')
+    #compile our unicode list of image links
+    image_links = [each.get('src') for each in images]
+    for each in image_links:
+        filename=each.split('/')[-1]
+        urllib.request.urlretrieve(each, filename)
+    return image_links
+
+
+entry = input("Type the URL of the site you want the images from:")
+
+get_images(entry)
+
+import os
+import shutil
+
+#Attention! Paths like \\Users and any other that begins with \U will not work unless you double the \
+#So it must look like \\Users
+
+
+sourcepath="path of where this file is located"
+source = os.listdir(sourcepath)
+
+folder = input("Paste the destiny path:")
+
+destinationpath = folder
+for files in source:
+    if files.endswith('.jpg'):
+        shutil.move(os.path.join(sourcepath,files), os.path.join(destinationpath,files))
+
+
+k=input("Finished! Press any key to exit.")
