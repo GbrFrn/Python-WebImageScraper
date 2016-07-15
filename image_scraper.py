@@ -25,7 +25,7 @@ def get_images(url):
     return image_links
 
 
-#Warning!! If your URL contains "\U" such as \Users it will not work properly
+#Warning!! If your Path contains "\U" such as \Users it will not work properly
 #To solve this you must double all the \ so that it looks like \\Users
 
 entry = input("Paste the site URL:")
