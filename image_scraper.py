@@ -37,7 +37,7 @@ import shutil
 sourcepath="The path where this .py is located at"
 source = os.listdir(sourcepath)
 
-folder = input("Your desired custom path")
+folder = input("Paste your desired custom path:")
 
 destinationpath = folder
 for files in source:
