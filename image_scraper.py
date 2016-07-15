@@ -1,6 +1,6 @@
 #Added support to filter by class name of html element
 #Added destination folder support
-#Updated code to work on urllib.request
+#Updated code to work with urllib.request
 
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
