@@ -27,7 +27,7 @@ def get_images(url):
 
 #Warning!! If your Path contains "\U" such as \Users it will not work properly
 #To solve this you must double all the \ so that it looks like \\Users
-#Do not put this .py file in a location(folder) where are other images from the format you choose
+#Do not put this .py file in a location(folder) where are other images with the format you choose
 #The program will automatically transfer all the images on the folder of its location to the folder you chose
 #Use with caution
 
@@ -44,7 +44,7 @@ folder = input("Paste your desired custom path:")
 
 destinationpath = folder
 for files in source:
-    if files.endswith('.jpg'):
+    if files.endswith('.jpg,.png,.gif'):
         shutil.move(os.path.join(sourcepath,files), os.path.join(destinationpath,files))
 
 
